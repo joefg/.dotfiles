@@ -36,3 +36,9 @@ they'll error on startup if you don't have them installed.
 
 Completion is powered by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), with
 suggestions from defaults and from the LSP of your choice.
+
+### VSCode
+
+In lieu of a proper managed extensions file, there is a script to install VSCode
+plugins in `scripts/vscode-plugins.sh`. The rest of the VSCode config is to be
+handled on a per-machine basis.
