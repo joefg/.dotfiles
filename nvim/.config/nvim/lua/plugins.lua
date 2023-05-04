@@ -55,4 +55,3 @@ require('packer').startup(
 		}
 	}
 )
-
