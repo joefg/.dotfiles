@@ -21,6 +21,7 @@ require('plugins')
 require('macros')
 require('template')
 require('lsp')
+require('treesitter')
 
 --   __  __ (_)
 --  / / / // / 
@@ -90,15 +91,3 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 
 vim.opt.undolevels = 999
-
--- Treesitter settings
-require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    custom_captures = {},
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true
-  }
-}
