@@ -47,6 +47,13 @@ require('packer').startup(
 			-- LSP
 			use { 'neovim/nvim-lspconfig' };
 
+			-- Completion
+			use { 'hrsh7th/cmp-nvim-lsp' };
+			use { 'hrsh7th/cmp-buffer' };
+			use { 'hrsh7th/cmp-path' };
+			use { 'hrsh7th/cmp-cmdline' };
+			use { 'hrsh7th/nvim-cmp' };
+
 			-- polyglot (all the useful languages, loaded)
 			use { 'sheerun/vim-polyglot' };
 	end,

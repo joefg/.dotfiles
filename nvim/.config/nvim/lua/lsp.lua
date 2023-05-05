@@ -6,22 +6,29 @@
 --         /_/      
 
 local lsp = require('lspconfig');
+local capabilities = require('cmp_nvim_lsp').default_capabilities();
 
-lsp.pyright.setup {}
+lsp.pyright.setup {
+  capabilities = capabilities
+}
 lsp.eslint.setup {
-  root_dir = lsp.util.root_pattern("package.json")
+  root_dir = lsp.util.root_pattern("package.json"),
+  capabilities = capabilities
 }
 lsp.tsserver.setup {
-  root_dir = lsp.util.root_pattern("package.json")
+  root_dir = lsp.util.root_pattern("package.json"),
+  capabilities = capabilities
 }
 lsp.denols.setup {
-  root_dir = lsp.util.root_pattern("deno.json")
+  root_dir = lsp.util.root_pattern("deno.json"),
+  capabilities = capabilities
 }
 lsp.rust_analyzer.setup {
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
     ['rust-analyzer'] = {},
   },
+  capabilities = capabilities
 }
 
 -- Global mappings.

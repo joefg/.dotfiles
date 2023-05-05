@@ -22,6 +22,7 @@ require('macros')
 require('template')
 require('lsp')
 require('treesitter')
+require('completion')
 
 --   __  __ (_)
 --  / / / // / 
