@@ -27,5 +27,10 @@ the AUR or from the Nerd Fonts website.
 ### Linters
 
 I use `pyright`, `eslint`, `deno`, and `typescript-language-server` to lint my code.
-The configs in `nvim/.config/nvim/init.lua` have these configured, but they'll error on
+The configs in `nvim/.config/nvim/lua/lsp.lua` have these configured, but they'll error on
 startup if you don't have them installed.
+
+### Completion
+
+Completion is powered by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), with suggestions
+from defaults and from the LSP of your choice.
