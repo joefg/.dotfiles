@@ -61,6 +61,12 @@ set noswapfile
 
 set undolevels=999
 
+" W/Q/Wq/WQ helper
+cabbrev W w
+cabbrev Q q
+cabbrev Wq wq
+cabbrev WQ wq
+
 " trim lines to 80 chars in Markdown files
 " vgq should trim lines to 80 chars intelligently
 au BufRead,BufNewFile *.md setlocal textwidth=80
