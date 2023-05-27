@@ -52,7 +52,7 @@ vim.opt.textwidth = 100	    -- Line wrap (number of cols)
 vim.opt.showmatch = true    -- Highlight matching brace
 vim.opt.errorbells = true   -- Beep or flash screen on errors
 vim.opt.visualbell = true   -- Use visual bell (no beeping)
-vim.cmd 'set mouse='        -- Disable mouse
+vim.opt.mouse = ''          -- Disable mouse
 
 -- folds
 vim.opt.foldmethod = 'indent'
