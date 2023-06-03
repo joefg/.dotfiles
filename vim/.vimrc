@@ -69,4 +69,7 @@ cabbrev WQ wq
 
 " trim lines to 80 chars in Markdown files
 " vgq should trim lines to 80 chars intelligently
-au BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+" git commit message length
+autocmd BufRead,BufNewFile COMMIT_EDITMSG setlocal textwidth=80
