@@ -1,0 +1,5 @@
+alias nl n;;l
+alias sl s;;l
+alias ll u;;d;;l
+
+# vim:ft=python
