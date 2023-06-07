@@ -43,6 +43,15 @@ if [ -r /usr/bin/fzf ]; then
   source /usr/share/fzf/completion.zsh
 fi
 
+# nnn
+if [ -r /usr/local/bin/nnn ]; then
+  local nnn_plugs='';
+  if [ -r /usr/bin/git ]; then
+    nnn_plugs=$nnn_plugs'g:!git log --oneline --graph --all;d:!git diff;';
+  fi;
+  export NNN_PLUG=$nnn_plugs;
+fi
+
 # Autoload modules
 autoload -Uz compinit
 autoload -Uz vcs_info
