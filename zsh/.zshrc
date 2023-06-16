@@ -18,19 +18,11 @@ alias aliases="$EDITOR ~/.aliases.zsh"
 alias dotfiles="cd ~/.dotfiles"
 
 alias ls="ls --color=auto"
-alias l="ls"
 alias ll="ls -alF"
 
 alias ..="cd ../"
 alias ~="cd ~"
 alias open="xdg-open"
-
-# web apps
-alias myip="curl -s http://ifconfig.co"
-alias mycoord="curl -s ipinfo.io/8.8.8.8/loc"
-alias mycity="curl -s ifconfig.co/city"
-alias coinz="curl -s cmc.rjldev.com"
-alias moon="curl -s wttr.in/Moon"
 
 # Private aliases
 if [ -r ~/.aliases.zsh ]; then
