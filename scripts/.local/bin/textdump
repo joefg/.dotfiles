@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function textdump(){
+    TEXT=${1:-Hello}
+    for i in {0..9}; do
+        printf "\x1b[${i}m$TEXT\x1b[0m | %q\n" "\x1b[${i}m$TEXT\x1b[0m";
+    done
+}
+
+textdump $1
