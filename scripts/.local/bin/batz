@@ -1,41 +1,41 @@
 #!/usr/bin/env sh
 
 function batz(){
-	local CHARGING=$(cat /sys/class/power_supply/AC/online)
-	if [ -f /sys/class/power_supply/BAT0/capacity ]; then
-		local USE_ICON=${1:-no}
-		local CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
-		local ICON=''
-		if [ $USE_ICON = 'icon' ]; then
-			if [ $CHARGING = 1 ]; then
-				ICON="󰂄"
-			else
-				if [ $CAPACITY -le 10 ]; then
-					ICON="󰁺"
-				elif [ $CAPACITY -gt 10 ] && [ $CAPACITY -le 20 ]; then
-					ICON="󰁻"
-				elif [ $CAPACITY -gt 20 ] && [ $CAPACITY -le 30 ]; then
-					ICON="󰁼"
-				elif [ $CAPACITY -gt 30 ] && [ $CAPACITY -le 40 ]; then
-					ICON="󰁽"
-				elif [ $CAPACITY -gt 40 ] && [ $CAPACITY -le 50 ]; then
-					ICON="󰁾"
-				elif [ $CAPACITY -gt 50 ] && [ $CAPACITY -le 60 ]; then
-					ICON="󰁿"
-				elif [ $CAPACITY -gt 60 ] && [ $CAPACITY -le 70 ]; then
-					ICON="󰁿"
-				elif [ $CAPACITY -gt 70 ] && [ $CAPACITY -le 80 ]; then
-					ICON="󰂁"
-				elif [ $CAPACITY -gt 80 ] && [ $CAPACITY -le 90 ]; then
-					ICON="󰂂"
+		if [ -f /sys/class/power_supply/BAT0/capacity ]; then
+			local CHARGING=$(cat /sys/class/power_supply/AC/online)
+			local USE_ICON=${1:-no}
+			local CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
+			local ICON=''
+			if [ $USE_ICON = 'icon' ]; then
+				if [ $CHARGING = 1 ]; then
+					ICON="󰂄"
 				else
-					ICON="󰁹"
+					if [ $CAPACITY -le 10 ]; then
+						ICON="󰁺"
+					elif [ $CAPACITY -gt 10 ] && [ $CAPACITY -le 20 ]; then
+						ICON="󰁻"
+					elif [ $CAPACITY -gt 20 ] && [ $CAPACITY -le 30 ]; then
+						ICON="󰁼"
+					elif [ $CAPACITY -gt 30 ] && [ $CAPACITY -le 40 ]; then
+						ICON="󰁽"
+					elif [ $CAPACITY -gt 40 ] && [ $CAPACITY -le 50 ]; then
+						ICON="󰁾"
+					elif [ $CAPACITY -gt 50 ] && [ $CAPACITY -le 60 ]; then
+						ICON="󰁿"
+					elif [ $CAPACITY -gt 60 ] && [ $CAPACITY -le 70 ]; then
+						ICON="󰁿"
+					elif [ $CAPACITY -gt 70 ] && [ $CAPACITY -le 80 ]; then
+						ICON="󰂁"
+					elif [ $CAPACITY -gt 80 ] && [ $CAPACITY -le 90 ]; then
+						ICON="󰂂"
+					else
+						ICON="󰁹"
+					fi
 				fi
+				printf "%s %s%%\n" $ICON $CAPACITY
+			else
+				printf "%s%%\n" $CAPACITY
 			fi
-			printf "%s %s%%\n" $ICON $CAPACITY
-		else
-			printf "%s%%\n" $CAPACITY
-		fi
 	fi
 }
 
