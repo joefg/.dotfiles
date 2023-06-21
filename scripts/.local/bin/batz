@@ -2,7 +2,6 @@
 
 function batz(){
 	local CHARGING=$(cat /sys/class/power_supply/AC/online)
-
 	if [ -f /sys/class/power_supply/BAT0/capacity ]; then
 		local CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
 		if [ $CHARGING = 1 ]; then

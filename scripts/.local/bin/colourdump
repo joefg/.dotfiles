@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 function colourdump(){
-    COLUMNS=${1:-5}
+    local COLUMNS=${1:-5}
     for i in {0..255}; do
         printf "\x1b[38;5;${i}mcolour${i}\x1b[0m ";
         if [ $((i % $COLUMNS)) = 0 ] || [ $i = 255 ]; then
