@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+function batz(){
+	local CHARGING=$(cat /sys/class/power_supply/AC/online)
+
+	if [ -f /sys/class/power_supply/BAT0/capacity ]; then
+		local CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
+		if [ $CHARGING = 1 ]; then
+			printf "%s%%+\n" $CAPACITY
+		else
+			printf "%s%%\n" $CAPACITY
+		fi
+	fi
+}
+
+batz
