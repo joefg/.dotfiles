@@ -9,4 +9,10 @@ if [ -r /usr/bin/git ]; then
 
     # gl - show config
     git config --global alias.gl 'config --global -l'
+
+    # use neovim as a difftool
+    if [ -r /usr/bin/nvim ]; then
+        git config --global merge.tool nvimdiff
+        git config --global mergetool.keepBackup false
+    fi
 fi
