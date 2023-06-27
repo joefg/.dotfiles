@@ -7,6 +7,9 @@ if [ -r /usr/bin/git ]; then
     # lol - pretty git log oneline
     git config --global alias.lol "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+    # commit --verbose by default
+    git config --global commit.verbose true
+
     # gl - show config
     git config --global alias.gl 'config --global -l'
 
