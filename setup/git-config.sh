@@ -13,8 +13,11 @@ if [ -r /usr/bin/git ]; then
     # gl - show config
     git config --global alias.gl 'config --global -l'
 
-    # use neovim as a difftool
     if [ -r /usr/bin/nvim ]; then
+        # use neovim as the default editor
+        git config --global core.editor nvim
+
+        # use neovim as a difftool
         git config --global merge.tool nvimdiff
         git config --global mergetool.keepBackup false
     fi
