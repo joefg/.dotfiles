@@ -140,3 +140,9 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
+
+# deno/dvm support
+if [ -r "$HOME/.dvm" ]; then
+  export DVM_DIR="$HOME/.dvm"
+  export PATH="$DVM_DIR/bin:$PATH"
+fi
