@@ -114,3 +114,8 @@ zstyle ':vcs_info:*' actionformats " (${BLUE}%b${YELLOW}|${RED}%a%u%c${NO_COLOR}
 zstyle ':vcs_info:*' formats       " (${BLUE}%b%u%c${NO_COLOR}%})" "zsh: %r"
 
 PROMPT='${GREEN}%n@%m${NO_COLOR}:%B${YELLOW}%~${NO_COLOR}%b$vcs_info_msg_0_ %B$%b '
+
+if [ -r "$HOME/.dvm" ]; then
+  export DVM_DIR="$HOME/.dvm"
+  export PATH="$DVM_DIR/bin:$PATH"
+fi
