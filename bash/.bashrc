@@ -107,9 +107,6 @@ function parse_git_dirty {
 	fi
 }
 
-# I like to use fish on personal machines, but don't want it installed on other machines.
-# Instead of using chsh to set the shell, I'm able to keep some bash specific stuff here.
-# Set up PS1 prompt for bash
 RCol='\[\e[m\]'    # reset colour
 Red='\[\e[0;31m\]' # red
 Gre='\[\e[0;32m\]' # green
