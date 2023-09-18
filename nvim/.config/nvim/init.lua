@@ -34,6 +34,7 @@ vim.cmd 'colorscheme base16-tomorrow-night'
 vim.opt.showmode = false
 require('lualine').setup()
 require('gitsigns').setup()
+require('neogit').setup({})
 
 --                __   __   _                    
 --   _____ ___   / /_ / /_ (_)____   ____ _ _____
