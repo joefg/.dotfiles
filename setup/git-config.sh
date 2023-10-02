@@ -20,5 +20,12 @@ if [ -r /usr/bin/git ]; then
         # use neovim as a difftool
         git config --global merge.tool nvimdiff
         git config --global mergetool.keepBackup false
+    elif [ -r /usr/bin/vim ]; then
+        # use vim as the default editor
+        git config --global core.editor vim
+
+        # use vimdiff as a difftool
+        git config --global merge.tool vimdiff
+        git config --global mergetool.keepBackup false
     fi
 fi
