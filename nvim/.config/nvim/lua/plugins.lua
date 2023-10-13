@@ -27,6 +27,10 @@ require('packer').startup(
 			-- Packer can manage itself.
 			use { 'wbthomason/packer.nvim' };
 
+			-- editorconfig
+			-- https://github.com/editorconfig/editorconfig-vim
+			use { 'editorconfig/editorconfig-vim' };
+
 			-- Colour scheme
 			use { 'RRethy/nvim-base16'} ;
 
