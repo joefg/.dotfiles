@@ -26,17 +26,6 @@ to disable it if it can't detect any patched fonts available. The font I
 currently use is `UbuntuMono Nerd Font`, available in the AUR or from the Nerd
 Fonts website.
 
-### Linters
-
-I use `pyright`, `eslint`, `deno`, and `typescript-language-server` to lint my
-code. The configs in `nvim/.config/nvim/lua/lsp.lua` have these configured, but
-they'll error on startup if you don't have them installed.
-
-### Completion
-
-Completion is powered by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), with
-suggestions from defaults and from the LSP of your choice.
-
 ### Configuration APIs
 
 In cases where writing to a dotfile is discouraged, some applications have a
