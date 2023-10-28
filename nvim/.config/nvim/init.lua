@@ -10,19 +10,10 @@
 --	* https://github.com/nanotee/nvim-lua-guide
 --	* https://oroques.dev/notes/neovim-init/
 
---            __               _             
---    ____   / /__  __ ____ _ (_)____   _____
---   / __ \ / // / / // __ `// // __ \ / ___/
---  / /_/ // // /_/ // /_/ // // / / /(__  ) 
--- / .___//_/ \__,_/ \__, //_//_/ /_//____/  
---/_/               /____/                   
---
 require('plugins')
 require('macros')
 require('template')
-require('lsp')
 require('treesitter')
-require('completion')
 
 --   __  __ (_)
 --  / / / // / 
@@ -30,8 +21,8 @@ require('completion')
 -- \__,_//_/   
 --
 vim.cmd 'colorscheme base16-tomorrow-night'
-
 vim.opt.showmode = false
+
 require('lualine').setup()
 require('gitsigns').setup()
 require('neogit').setup({})
