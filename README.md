@@ -8,15 +8,7 @@ directory.
 I'm using [GNU Stow](https://www.gnu.org/software/stow/) to manage symbolic
 links from this dotfiles repository to their locations in the home directory.
 
-To install each config, run `stow $CONFIG` from this repository.
-
-### Local configuration
-
-I would avoid keeping everything on `main`.
-
-Instead, when you clone this repository, checkout to a new branch and use that,
-rebasing from `main` as often as you can, resolving conflicts locally rather
-than resolving them globally.
+To install each config, run `stow <config>` from this repository.
 
 ### Terminal Fonts
 
