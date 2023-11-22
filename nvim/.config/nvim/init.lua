@@ -10,7 +10,6 @@
 --	* https://github.com/nanotee/nvim-lua-guide
 --	* https://oroques.dev/notes/neovim-init/
 
-require('plugins')
 require('macros')
 require('template')
 require('treesitter')

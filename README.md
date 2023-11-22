@@ -2,8 +2,8 @@
 
 ## Installation and use
 
-To download, run `git clone https://github.com/joefg/.dotfiles.git` in your home
-directory.
+To download, run `git clone --recursive https://github.com/joefg/.dotfiles.git`
+in your home directory.
 
 I'm using [GNU Stow](https://www.gnu.org/software/stow/) to manage symbolic
 links from this dotfiles repository to their locations in the home directory.

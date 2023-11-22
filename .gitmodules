@@ -1,0 +1,24 @@
+[submodule "nvim/.local/share/nvim/site/pack/neogit"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/neogit
+	url = https://github.com/NeogitOrg/neogit.git
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/plenary.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/editorconfig-vim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/nvim-base16"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/nvim-base16
+	url = https://github.com/RRethy/nvim-base16
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/lualine.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/lualine.nvim
+	url = https://github.com/hoob3rt/lualine.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/gitsigns.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/nvim-treesitter"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/vim-polyglot"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
