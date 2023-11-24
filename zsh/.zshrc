@@ -2,8 +2,8 @@
 
 # Exports
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=200
+SAVEHIST=200
 
 # Default editor
 if [ -r /usr/bin/nvim ]; then
