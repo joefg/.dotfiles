@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-function moji(){
+function emoji(){
 cat << EOF
 😄 :smile:
 😆 :laughing:
@@ -846,6 +846,14 @@ cat << EOF
 🔺 :small_red_triangle:
 🔻 :small_red_triangle_down:
 EOF
+}
+
+function moji() {
+	if [[ -f /usr/bin/fzf ]]; then
+		emoji | fzf-tmux -p | xclip -sel clip
+	else
+		echo "fzf not installed"
+	fi
 }
 
 moji
