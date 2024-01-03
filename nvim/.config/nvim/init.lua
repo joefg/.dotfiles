@@ -13,6 +13,7 @@
 require('macros')
 require('template')
 require('treesitter')
+require('statusline'):setup()
 
 --   __  __ (_)
 --  / / / // / 
@@ -20,9 +21,8 @@ require('treesitter')
 -- \__,_//_/   
 --
 vim.cmd 'colorscheme retrobox'
-vim.opt.showmode = false
+vim.opt.showmode = true
 
-require('lualine').setup()
 require('gitsigns').setup()
 require('neogit').setup({})
 

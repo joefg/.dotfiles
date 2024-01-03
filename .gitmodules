@@ -7,9 +7,6 @@
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/editorconfig-vim"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
-[submodule "nvim/.local/share/nvim/site/pack/plugins/start/lualine.nvim"]
-	path = nvim/.local/share/nvim/site/pack/plugins/start/lualine.nvim
-	url = https://github.com/hoob3rt/lualine.nvim
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/gitsigns.nvim"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim
