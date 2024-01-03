@@ -19,7 +19,7 @@ require('treesitter')
 -- / /_/ // /  
 -- \__,_//_/   
 --
-vim.cmd 'colorscheme base16-tomorrow-night'
+vim.cmd 'colorscheme retrobox'
 vim.opt.showmode = false
 
 require('lualine').setup()
