@@ -5,14 +5,20 @@
 -- \__//_/    \___/ \___//____//_/ \__/ \__/ \___//_/     
 --                                                        
 
-local treesitter = require('nvim-treesitter.configs')
-treesitter.setup {
-  highlight = {
-    enable = true,
-    custom_captures = {},
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true
+local M = {}
+
+M.setup = function()
+  local treesitter = require('nvim-treesitter.configs')
+  treesitter.setup {
+    highlight = {
+      enable = true,
+      custom_captures = {},
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true
+    }
   }
-}
+end
+
+return M

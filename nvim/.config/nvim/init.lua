@@ -10,83 +10,60 @@
 --	* https://github.com/nanotee/nvim-lua-guide
 --	* https://oroques.dev/notes/neovim-init/
 
-require('macros')
-require('template')
-require('treesitter')
-require('statusline'):setup()
+local settings = require('settings')
+settings:setup()
 
 --   __  __ (_)
 --  / / / // / 
 -- / /_/ // /  
 -- \__,_//_/   
 --
+
 vim.cmd 'colorscheme retrobox'
-vim.opt.showmode = true
+local statusline = require('statusline')
+statusline:setup()
 
-require('gitsigns').setup()
-require('neogit').setup({})
+local netrw = require('netrw')
+netrw:setup()
 
---                __   __   _                    
---   _____ ___   / /_ / /_ (_)____   ____ _ _____
---  / ___// _ \ / __// __// // __ \ / __ `// ___/
--- (__  )/  __// /_ / /_ / // / / // /_/ /(__  ) 
---/____/ \___/ \__/ \__//_//_/ /_/ \__, //____/  
---                                /____/         
+--           _ __ 
+--    ____ _(_) /_
+--   / __ `/ / __/
+--  / /_/ / / /_  
+--  \__, /_/\__/  
+-- /____/        
 --
-vim.opt.title = true
-vim.opt.number = true       -- Show line numbers
-vim.opt.ruler = true        -- Show row and column ruler information
-vim.opt.cursorline = true   -- Show a cursor line
-vim.opt.linebreak = true    -- Break lines at word (requires Wrap lines)
-vim.opt.showbreak = '+++'   -- Wrap-broken line prefix
-vim.opt.textwidth = 100	    -- Line wrap (number of cols)
-vim.opt.showmatch = true    -- Highlight matching brace
-vim.opt.errorbells = true   -- Beep or flash screen on errors
-vim.opt.visualbell = true   -- Use visual bell (no beeping)
-vim.opt.mouse = ''          -- Disable mouse
 
--- folds
-vim.opt.foldmethod = 'indent'
-vim.opt.foldlevel = 99
+local gitsigns = require('gitsigns')
+gitsigns.setup()
 
--- redrawing
-vim.opt.lazyredraw = true
-vim.opt.bomb = true
-vim.opt.binary = true
-vim.opt.ttyfast = true
-vim.opt.syntax = 'on'
+local neogit = require('neogit')
+neogit.setup({})
 
--- encodings
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-vim.opt.fileencodings = 'utf-8'
-vim.opt.fileformats = 'unix'
+--    ____ ___  ____ _______________  _____
+--   / __ `__ \/ __ `/ ___/ ___/ __ \/ ___/
+--  / / / / / / /_/ / /__/ /  / /_/ (__  ) 
+-- /_/ /_/ /_/\__,_/\___/_/   \____/____/  
+                                        
+local macros = require('macros')
+macros:setup()
 
--- fix backspace indent
-vim.opt.backspace = 'indent,eol,start'
+--   __                       __      __           
+--  / /____  ____ ___  ____  / /___ _/ /____  _____
+-- / __/ _ \/ __ `__ \/ __ \/ / __ `/ __/ _ \/ ___/
+--/ /_/  __/ / / / / / /_/ / / /_/ / /_/  __(__  ) 
+--\__/\___/_/ /_/ /_/ .___/_/\__,_/\__/\___/____/  
+--                 /_/                             
 
--- tabs. May be overriten by autocmd rules
-vim.opt.autoindent = true   -- Auto-indent new lines
-vim.opt.shiftwidth = 4      -- Number of auto-indent spaces
-vim.opt.smartindent = true  -- Enable smart-indent
-vim.opt.smarttab = true     -- Enable smart-tabs
-vim.opt.softtabstop = 4     -- Number of spaces per Tab
+local templates = require('template')
+templates:setup()
 
--- searching
-vim.opt.hlsearch = true       -- Highlight all search results
-vim.opt.smartcase = true      -- Enable smart-case search
-vim.opt.ignorecase = true     -- Always case-insensitive
-vim.opt.incsearch = true      -- Searches for strings incrementally
+--    __                      _ __  __           
+--   / /_________  ___  _____(_) /_/ /____  _____
+--  / __/ ___/ _ \/ _ \/ ___/ / __/ __/ _ \/ ___/
+-- / /_/ /  /  __/  __(__  ) / /_/ /_/  __/ /    
+-- \__/_/   \___/\___/____/_/\__/\__/\___/_/     
+--                                               
 
--- directories for swp files
-vim.opt.backup = false
-vim.opt.swapfile = false
-
-vim.opt.undolevels = 999
-
--- netrw (vim's file explorer)
-vim.g.netrw_keepdir = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 30
-vim.g.netrw_localcopydircmd = 'cp -r'
+local ts = require('treesitter')
+ts:setup()

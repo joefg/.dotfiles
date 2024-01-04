@@ -90,6 +90,7 @@ end
 M.setup = function(self)
 	vim.o.laststatus = 2
 	vim.o.statusline = self:statusline()
+	vim.opt.showmode = true
 end
 
 return M
