@@ -18,7 +18,6 @@ alias ..='cd ../'
 alias ~='cd ~'
 alias cls='clear'
 
-alias aliases="$EDITOR ~/.aliases.bash"
 alias dotfiles="cd ~/.dotfiles"
 
 alias ..="cd ../"
