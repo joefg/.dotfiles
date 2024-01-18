@@ -23,3 +23,6 @@ alias dotfiles="cd ~/.dotfiles"
 alias ..="cd ../"
 alias ~="cd ~"
 alias open="xdg-open"
+
+# Networking
+alias publicip="dig +short txt ch whoami.cloudflare @1.0.0.1"
