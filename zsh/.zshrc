@@ -1,7 +1,7 @@
 # Exports
 HISTFILE=~/.histfile
-HISTSIZE=200
-SAVEHIST=200
+HISTSIZE=1000
+SAVEHIST=1000
 
 # Options
 unsetopt beep
