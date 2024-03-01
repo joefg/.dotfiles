@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function run_container(){
+	local model=$1
+	docker run -ti \
+		-p 8080:8080 \
+		docker.io/localai/localai:v2.9.0-ffmpeg-core "$model"
+}
+
+function localai(){
+	run_container $1
+}
+
+localai $1
