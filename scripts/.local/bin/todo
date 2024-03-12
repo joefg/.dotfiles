@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+function header(){
+cat << EOM
+$(date '+%d/%m/%Y')
+
+---
+
+EOM
+}
+
+function todo(){
+  local TODAY_FILE=~/.todo/$(date -I).md
+  local YESTERDAY_FILE=~/.todo/$(date -I --date='yesterday').md
+
+  mkdir -p ~/.todo
+  if [ ! -f $TODAY_FILE ]; then
+    touch $TODAY_FILE
+    header > $TODAY_FILE
+    if [ -f $YESTERDAY_FILE ]; then
+      cat $YESTERDAY_FILE >> $TODAY_FILE
+    fi
+  fi
+
+  $EDITOR $TODAY_FILE
+}
+
+todo
