@@ -1,17 +1,17 @@
-if [ -r "$HOME/.dvm" ]; then
+if [ -r $HOME/.dvm ]; then
   export DVM_DIR="$HOME/.dvm"
   export PATH="$DVM_DIR/bin:$PATH"
 fi
 
-if [ -r "$HOME/.nvm" ]; then
+if [ -r $HOME/.nvm ]; then
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  alias nvm="unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@"
+  [ -s "$NVM_DIR"/bash_completion ] && \. "$NVM_DIR"/bash_completion
+  alias nvm="unalias nvm; [ -s "$NVM_DIR"/nvm.sh ] && . "$NVM_DIR"/nvm.sh; nvm $@"
 fi
 
-if [ -r "$HOME/.dvm" ]; then
+if [ -r $HOME/.bun ]; then
   # bun completions
-  [ -s "/home/jfg/.bun/_bun" ] && source "/home/jfg/.bun/_bun"
+  [ -s ~/.bun/_bun ] && source ~/.bun/_bun
 
   # bun
   export BUN_INSTALL="$HOME/.bun"
