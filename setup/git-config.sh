@@ -28,4 +28,11 @@ if [ -r /usr/bin/git ]; then
         git config --global merge.tool vimdiff
         git config --global mergetool.keepBackup false
     fi
+
+    if [ -r /usr/bin/difft ]; then
+        # if we have difftastic, add alises which use it but otherwise leave diff alone
+        git config --global alias.difftl '!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f'
+        git config --global alias.difft '!f() { GIT_EXTERNAL_DIFF=difft git diff; }; f'
+        git config --global alias.diffts '!f() { GIT_EXTERNAL_DIFF=difft git show HEAD --ext-diff; }; f'
+    fi
 fi
