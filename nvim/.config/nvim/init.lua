@@ -21,7 +21,10 @@ settings:setup()
 
 vim.cmd 'colorscheme retrobox'
 local statusline = require('statusline')
-statusline:setup()
+statusline:setup({
+	separator = 'arrows',
+	git_symbol = ' '
+})
 
 local netrw = require('netrw')
 netrw:setup()

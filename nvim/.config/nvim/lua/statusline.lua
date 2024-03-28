@@ -70,22 +70,20 @@ M.colours = {
 }
 
 M.separators = {
-	arrow = {"  ", "  "}, -- If you can't see these arrows, use "blank"
-	blank = {"   ", "   "}  -- instead.
+	arrows = {"  ", "  "},
+	bars = { " | "," | " },
+	blank = {"   ", "   "}
 }
 
-M.sep = function(self, style, direction)
-	if style == nil or style == "blank" then
-		return " "
-	end
-	local sep_style = style
+M.sep = function(self, direction)
+	local sep_style = self.separator or " "
 	local sep_direction = 1
 	if direction == "left"
 		then sep_direction = 1
 	elseif direction == "right"
 		then sep_direction = 2
 	end
-	return M.separators[sep_style][sep_direction]
+	return self.separators[sep_style][sep_direction]
 end
 
 M.mode = function(self)
@@ -99,14 +97,11 @@ M.mode = function(self)
 	)
 end
 
-M.git_status = function(self, symbol)
+M.git_status = function(self)
 	local git_info = vim.b.gitsigns_status_dict
-	local git_symbol = ""
+	local git_symbol = self.git_symbol
 	if not git_info or git_info.head == "" then
 		return nil
-	end
-	if symbol then
-		git_symbol = " "
 	end
 	return table.concat({
 		 git_symbol,
@@ -125,14 +120,11 @@ M.file = function(self)
 	return "%t%m"
 end
 
-M.fileinfo = function(self, separator)
+M.fileinfo = function(self, direction)
+	local separator = self:sep(direction)
 	local filetype = vim.o.filetype
 	if filetype == "" then
 		filetype = nil
-	end
-	local sep_symbol = " | "
-	if separator ~= nil then
-		sep_symbol = separator
 	end
 	local info = {
 		"%{&fileencoding?&fileencoding:&encoding}",
@@ -141,11 +133,12 @@ M.fileinfo = function(self, separator)
 	}
 	return string.format(
 		"%s",
-		table.concat(clean_nils(info), sep_symbol)
+		table.concat(clean_nils(info), separator)
 	)
 end
 
-M.component = function(self, text, colour, separator, direction)
+M.component = function(self, text, colour, direction)
+	local separator = self.separator
 	if text == nil then
 		return nil
 	end
@@ -154,29 +147,27 @@ M.component = function(self, text, colour, separator, direction)
 			"%s%s%s",
 			colour,
 			text,
-			self:sep(separator, direction)
+			self:sep(direction)
 	)
 	elseif direction == "right" then
 		return string.format(
 			"%s%s%s",
 			colour,
-			self:sep(separator, direction),
+			self:sep(direction),
 			text
 		)
 	end
 end
 
 M.statusline_active = function(self)
-	local separator = "arrow"
-	local use_git_symbol = true
 	local left = {
-		self:component(self:mode(), self.colours.default, separator, "left"),
-		self:component(self:git_status(use_git_symbol), self.colours.default, separator, "left"),
-		self:component(self:file(), self.colours.default, separator, "left")
+		self:component(self:mode(), self.colours.default, "left"),
+		self:component(self:git_status(), self.colours.default, "left"),
+		self:component(self:file(), self.colours.default, "left")
 	}
 	local right = {
-		self:component(self:fileinfo(self:sep(separator, "right")), self.colours.default, separator, "right"),
-		self:component(self:lineinfo(), self.colours.default, separator, "right")
+		self:component(self:fileinfo("right"), self.colours.default, "right"),
+		self:component(self:lineinfo(), self.colours.default, "right")
 	}
 	return string.format(
 		"%s %s %s",
@@ -193,13 +184,15 @@ M.statusline_inactive = function(self)
 	return " " .. table.concat(bar)
 end
 
-M.setup = function(self)
+M.setup = function(self, config)
+	self.separator = config.separator or "blank"
+	self.git_symbol = config.git_symbol or "g:"
 	Statusline = {}
 	Statusline.active = function()
-		return M:statusline_active()
+		return self:statusline_active()
 	end
 	Statusline.inactive = function()
-		return M:statusline_inactive()
+		return self:statusline_inactive()
 	end
 	vim.opt.showmode = false
 	vim.opt.statusline = Statusline.active()
