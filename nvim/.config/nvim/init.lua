@@ -70,3 +70,12 @@ templates:setup()
 
 local ts = require('treesitter')
 ts:setup()
+
+--     __   _____ ____
+--    / /  / ___// __ \_____
+--   / /   \__ \/ /_/ / ___/
+--  / /______/ / ____(__  )
+-- /_____/____/_/   /____/
+
+local lsp = require('lsp')
+lsp:setup({})
