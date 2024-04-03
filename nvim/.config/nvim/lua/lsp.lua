@@ -65,6 +65,11 @@ M.setup = function(config)
 			end, opts)
 		end,
 	})
+
+	-- completeopt
+	-- Disable preview when this module is loaded so that there's no screen glitches
+	-- when using omnifunc
+	vim.opt.completeopt = { "menu" }
 end
 
 return M
