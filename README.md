@@ -23,10 +23,11 @@ On environments where this font is not installed, there are options in both the
 `nvim` and `tmux` configurations which can use other symbols in place of these
 icons.
 
-### Configuration APIs
+### Configuration scripts
 
 In cases where writing to a dotfile is discouraged, some applications have a
-stable API with which configuration changes can be made.
+stable API with which configuration changes can be made. These can be found in
+`./setup/`.
 
 #### Git
 
@@ -39,16 +40,3 @@ be many different machine-level differences in configuration. Have a look at
 In lieu of a proper managed extensions file, there is a script to install VSCode
 plugins in `setup/vscode-plugins.sh`. The rest of the VSCode config is to be
 handled on a per-machine basis.
-
-### Language Servers
-
-`nvim` has support for language servers, and by default it's enabled here.
-Present LSPs are:
-
-* deno
-
-* TypeScript (has one built in)
-
-* JavaScript (eslint)
-
-* Python (pyright)
