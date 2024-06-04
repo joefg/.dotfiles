@@ -15,7 +15,7 @@ end
 
 local M = {}
 
-M.modes = { 
+M.modes = {
 	["n"]     = "NORMAL",
 	["no"]    = "O-PENDING",
 	["nov"]   = "O-PENDING",
@@ -138,7 +138,6 @@ M.fileinfo = function(self, direction)
 end
 
 M.component = function(self, text, colour, direction)
-	local separator = self.separator
 	if text == nil then
 		return nil
 	end
@@ -179,7 +178,7 @@ end
 
 M.statusline_inactive = function(self)
 	local bar = {
-		self:component(self:file(), self.colours.normal, "blank", "left")
+		self:component(self:file(), self.colours.normal, "left")
 	}
 	return " " .. table.concat(bar)
 end

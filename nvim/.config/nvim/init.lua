@@ -17,7 +17,6 @@ settings:setup()
 --  / / / // / 
 -- / /_/ // /  
 -- \__,_//_/   
---
 
 vim.cmd 'colorscheme retrobox'
 local statusline = require('statusline')
@@ -35,7 +34,6 @@ netrw:setup()
 --  / /_/ / / /_  
 --  \__, /_/\__/  
 -- /____/        
---
 
 local gitsigns = require('gitsigns')
 gitsigns.setup()
@@ -47,7 +45,7 @@ neogit.setup({})
 --   / __ `__ \/ __ `/ ___/ ___/ __ \/ ___/
 --  / / / / / / /_/ / /__/ /  / /_/ (__  ) 
 -- /_/ /_/ /_/\__,_/\___/_/   \____/____/  
-                                        
+
 local macros = require('macros')
 macros:setup()
 
@@ -66,7 +64,6 @@ templates:setup()
 --  / __/ ___/ _ \/ _ \/ ___/ / __/ __/ _ \/ ___/
 -- / /_/ /  /  __/  __(__  ) / /_/ /_/  __/ /    
 -- \__/_/   \___/\___/____/_/\__/\__/\___/_/     
---                                               
 
 local ts = require('treesitter')
 ts:setup()
