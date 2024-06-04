@@ -28,6 +28,9 @@ M.setup = function(config)
 	-- Python (pyright)
 	lsp.pyright.setup({})
 
+	-- Lua (luals)
+	lsp.lua_ls.setup({})
+
 	-- Global mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
