@@ -75,4 +75,4 @@ ts:setup()
 -- /_____/____/_/   /____/
 
 local lsp = require('lsp')
-lsp:setup({})
+lsp:setup()
