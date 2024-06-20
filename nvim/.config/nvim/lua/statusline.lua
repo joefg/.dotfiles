@@ -71,8 +71,24 @@ M.colours = {
 
 M.separators = {
 	arrows = {"  ", "  "},
-	bars = { " | "," | " },
-	blank = {"   ", "   "}
+	bars   = { " | "," | " },
+	round  = { "  ", "  "},
+	blank  = {"   ", "   "}
+}
+
+M.lsp_symbols = {
+	symbols  = {
+		error   = " ",
+		warning = " ",
+		hint    = " ",
+		info    = " "
+	},
+	text = {
+		error   = "e:",
+		warning = "w:",
+		hints   = "h:",
+		info    = "i:"
+	}
 }
 
 M.sep = function(self, direction)
@@ -113,10 +129,14 @@ M.lineinfo = function()
 	if vim.bo.filetype == "alpha" then
 		return nil
 	end
-	return "%l:%c" 
+	return "%l:%c"
 end
 
-M.lsp = function()
+M.lsp = function(self)
+	if (vim.lsp.get_active_clients() == {}) then
+		return nil
+	end
+
   local count = {}
   local levels = {
     errors = "Error",
@@ -124,33 +144,34 @@ M.lsp = function()
     info = "Info",
     hints = "Hint",
   }
+	local symbol_set = self.lsp_symbol
 
   for k, level in pairs(levels) do
     count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
   end
 
-  local errors = ""
-  local warnings = ""
-  local hints = ""
-  local info = ""
+  local errors, warnings, hints, info = nil, nil, nil, nil
 
   if count["errors"] ~= 0 then
-    errors = " %#LspDiagnosticsSignError# " .. count["errors"]
+    errors = "%#LspDiagnosticsSignError#" .. self.lsp_symbols[symbol_set].error .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = " %#LspDiagnosticsSignWarning# " .. count["warnings"]
+    warnings = "%#LspDiagnosticsSignWarning#" .. self.lsp_symbols[symbol_set].warning .. count["warnings"]
   end
   if count["hints"] ~= 0 then
-    hints = " %#LspDiagnosticsSignHint# " .. count["hints"]
+    hints = "%#LspDiagnosticsSignHint#" .. self.lsp_symbols[symbol_set].hint .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = " %#LspDiagnosticsSignInformation# " .. count["info"]
+    info = "%#LspDiagnosticsSignInformation#" .. self.lsp_symbols[symbol_set].info .. count["info"]
   end
 
-  return errors .. warnings .. hints .. info
+	if errors == nil and warnings == nil and hints == nil and info == nil then
+		return nil
+	end
+  return (errors or "") .. (warnings or "") .. (hints or "") .. (info or "")
 end
 
-M.file = function(self)
+M.file = function()
 	return "%t%m"
 end
 
@@ -196,7 +217,8 @@ M.statusline_active = function(self)
 	local left = {
 		self:component(self:mode(), self.colours.default, "left"),
 		self:component(self:git_status(), self.colours.default, "left"),
-		self:component(self:file(), self.colours.default, "left")
+		self:component(self:file(), self.colours.default, "left"),
+		self:component(self:lsp(), self.colours.default, "left")
 	}
 	local right = {
 		self:component(self:fileinfo("right"), self.colours.default, "right"),
@@ -220,6 +242,8 @@ end
 M.setup = function(self, config)
 	self.separator = config.separator or "blank"
 	self.git_symbol = config.git_symbol or "g:"
+	self.lsp_symbol = config.lsp_symbol or "text"
+
 	Statusline = {}
 	Statusline.active = function()
 		return self:statusline_active()
@@ -227,8 +251,10 @@ M.setup = function(self, config)
 	Statusline.inactive = function()
 		return self:statusline_inactive()
 	end
+
 	vim.opt.showmode = false
 	vim.opt.statusline = Statusline.active()
+
 	vim.api.nvim_exec([[
 		augroup Statusline
 		au!

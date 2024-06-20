@@ -22,6 +22,7 @@ vim.cmd 'colorscheme retrobox'
 local statusline = require('statusline')
 statusline:setup({
 	separator = 'arrows',
+	lsp_symbol = 'symbols',
 	git_symbol = ' '
 })
 
