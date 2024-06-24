@@ -27,7 +27,15 @@ M.setup = function()
 	lsp.pyright.setup({})
 
 	-- Lua (luals)
-	lsp.lua_ls.setup({})
+	lsp.lua_ls.setup({
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" }
+				}
+			}
+		}
+	})
 
 	-- Global mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
