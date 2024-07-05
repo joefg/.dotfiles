@@ -20,3 +20,11 @@ Present LSPs are:
 * JavaScript (eslint)
 
 * Python (pyright)
+
+* Lua (luals)
+
+## Linting and Formatting
+
+I use [luals](https://luals.github.io/) in neovim as a sort-of linter, and to
+keep things neat I use [StyLua](https://github.com/JohnnyMorganz/StyLua) to
+format the code.
