@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 function clipqr(){
-	xclip -o -s -c | qrencode -o - | feh --force-aliasing -ZF -
+	xclip -o -s -c | qrencode -t ansiutf8 --
 }
 
 clipqr $1
