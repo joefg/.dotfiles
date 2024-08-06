@@ -5,8 +5,8 @@ If you want an IDE, just use VSCode. Otherwise, this works reasonably well.
 
 ## Plugins
 
-Plugins are kept as git submodules in `.local/share/nvim/site/pack/plugins/`.
-See the the README in there for more details.
+Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim), inside
+`init.lua`.
 
 ## Language Servers
 
