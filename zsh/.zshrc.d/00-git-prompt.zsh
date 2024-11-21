@@ -67,4 +67,9 @@ NO_COLOR="%f"
 zstyle ':vcs_info:*' actionformats " (${BLUE}%b${YELLOW}|${RED}%a%u%c${NO_COLOR})" "zsh: %r"
 zstyle ':vcs_info:*' formats       " (${BLUE}%b%u%c${NO_COLOR}%})" "zsh: %r"
 
-PROMPT='${GREEN}%n@%m${NO_COLOR}:%B${YELLOW}%~${NO_COLOR}%b$vcs_info_msg_0_ %B$%b '
+# export HIDEUSER=yes removes the user@host and branch name in subshells
+if [[ -v HIDEUSER ]]; then
+    PROMPT='${NO_COLOR}%B${YELLOW}%~${NO_COLOR}%b %B$%b '
+else
+    PROMPT='${GREEN}%n@%m${NO_COLOR}:%B${YELLOW}%~${NO_COLOR}%b$vcs_info_msg_0_ %B$%b '
+fi
