@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+function darken_tmux(){
+	echo "Closing curtains..."
+	sed -i -e 's/tomorrow.conf/tomorrow-night.conf/g' ~/.config/tmux/tmux.conf
+	echo "Please reload your tmux config."
+}
+
+function lighten_tmux(){
+	echo "Opening curtains..."
+	sed -i -e 's/tomorrow-night.conf/tomorrow.conf/g' ~/.config/tmux/tmux.conf
+	echo "Please reload your tmux config."
+}
+
+function curtains(){
+	COLORSCHEME="$(gsettings get org.gnome.desktop.interface color-scheme)"
+	if [ $COLORSCHEME = "'prefer-dark'" ]; then
+		darken_tmux
+	else
+		lighten_tmux
+	fi
+}
+
+curtains $1
