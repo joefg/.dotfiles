@@ -31,16 +31,7 @@ require("lazy").setup {
   -- languages
   { "sheerun/vim-polyglot" },
   -- git
-  { "lewis6991/gitsigns.nvim" },
-  {
-    "NeogitOrg/neogit",
-    branch = "master",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
-    config = true,
-  },
+  { "lewis6991/gitsigns.nvim" }
 }
 
 require("settings"):setup()
@@ -60,7 +51,6 @@ require("netrw"):setup()
 
 -- git plugins
 require("gitsigns").setup()
-require("neogit"):setup()
 
 --    ____ ___  ____ _______________  _____
 --   / __ `__ \/ __ `/ ___/ ___/ __ \/ ___/
