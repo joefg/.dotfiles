@@ -3,6 +3,7 @@
 PLUGINS=(
 	'vscodevim.vim'
 	'ms-vscode.theme-tomorrowkit'
+	'editorconfig.EditorConfig'
 )
 
 for PLUGIN in "${PLUGINS[@]}"; do
