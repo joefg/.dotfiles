@@ -24,8 +24,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
   -- editorconfig
   { "editorconfig/editorconfig-vim" },
-  -- lsps
-  { "neovim/nvim-lspconfig" },
   -- treesitter
   { "nvim-treesitter/nvim-treesitter" },
   -- languages
@@ -75,11 +73,3 @@ require("template"):setup()
 -- \__/_/   \___/\___/____/_/\__/\__/\___/_/
 
 require("treesitter"):setup()
-
---     __   _____ ____
---    / /  / ___// __ \_____
---   / /   \__ \/ /_/ / ___/
---  / /______/ / ____(__  )
--- /_____/____/_/   /____/
-
-require("lsp"):setup()
