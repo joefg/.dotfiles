@@ -22,6 +22,11 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
+=======
+  -- editorconfig
+  { "editorconfig/editorconfig-vim" },
+  -- treesitter
+  { "nvim-treesitter/nvim-treesitter" },
   -- languages
   { "sheerun/vim-polyglot" },
   -- git
@@ -90,3 +95,10 @@ require("template"):setup()
 --                       /____//____/        /____/   
 
 require("debugging"):setup()
+--    __                      _ __  __
+--   / /_________  ___  _____(_) /_/ /____  _____
+--  / __/ ___/ _ \/ _ \/ ___/ / __/ __/ _ \/ ___/
+-- / /_/ /  /  __/  __(__  ) / /_/ /_/  __/ /
+-- \__/_/   \___/\___/____/_/\__/\__/\___/_/
+
+require("treesitter"):setup()
