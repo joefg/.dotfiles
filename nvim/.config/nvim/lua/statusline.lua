@@ -129,7 +129,7 @@ M.lineinfo = function()
 end
 
 M.lsp = function(self)
-  if vim.lsp.get_active_clients() == {} then
+  if vim.lsp.get_clients() == {} then
     return nil
   end
 
