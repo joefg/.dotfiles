@@ -15,13 +15,8 @@ if [ -r /usr/bin/git ]; then
     git config --global tag.sort version:refname
 
     # shorthands
-    git config --global alias.sh 'show'
-    git config --global alias.st 'status'
-    git config --global alias.br 'branch'
-    git config --global alias.co 'checkout'
-    git config --global alias.sw 'switch'
-    git config --global alias.rs 'restore'
-    git config --global alias.cm 'commit'
+    git config --global alias.fixup "commit --fixup HEAD"
+    git config --global alias.squash "commit --squash HEAD"
     git config --global alias.gl 'config --global -l'
 
     # commit --verbose by default
