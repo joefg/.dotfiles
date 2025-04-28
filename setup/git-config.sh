@@ -17,7 +17,6 @@ if [ -r /usr/bin/git ]; then
     # shorthands
     git config --global alias.fixup "commit --fixup HEAD"
     git config --global alias.squash "commit --squash HEAD"
-    git config --global alias.gl 'config --global -l'
 
     # commit --verbose by default
     git config --global commit.verbose true
@@ -46,7 +45,8 @@ if [ -r /usr/bin/git ]; then
     git config --global diff.mnemonicPrefix true
     git config --global diff.renames true
     git config --global diff.colorMoved true
-    # if we have difftastic, add alises which use it but otherwise leave diff alone
+
+    # if we have difftastic, add aliases which use it but otherwise leave diff alone
     if [ -r /usr/bin/difft ]; then
         git config --global alias.difftl '!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f'
         git config --global alias.difft '!f() { GIT_EXTERNAL_DIFF=difft git diff; }; f'
