@@ -3,7 +3,7 @@ alias aliases="$EDITOR ~/.aliases.zsh"
 alias dotfiles="cd ~/.dotfiles"
 
 alias ls="ls --color=auto"
-alias ll="ls -alF"
+alias ll="ls -alFh"
 
 alias ..="cd ../"
 alias ~="cd ~"
