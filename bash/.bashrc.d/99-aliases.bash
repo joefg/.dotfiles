@@ -1,4 +1,7 @@
-# some ls aliases
+# Aliases
+alias aliases="$EDITOR ~/.aliases.bash"
+alias dotfiles="cd ~/.dotfiles"
+
 alias ll='ls -alFh'
 
 # enable color support of ls and also add handy aliases
@@ -26,3 +29,8 @@ alias open="xdg-open"
 
 # Networking
 alias publicip="dig +short txt ch whoami.cloudflare @1.0.0.1"
+
+# Private aliases
+if [ -r ~/.aliases.bash ]; then
+  source ~/.aliases.bash
+fi

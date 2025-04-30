@@ -27,6 +27,12 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+# Default editor
+if [ -r /usr/bin/nvim ]; then
+ export EDITOR=/usr/bin/nvim
+ export VISUAL=/usr/bin/nvim
+fi
+
 # Load our configurations from ~/.bashrc.d
 for file in ~/.bashrc.d/*.bash; do
   source $file
