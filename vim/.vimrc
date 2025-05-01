@@ -79,7 +79,7 @@ set statusline+=%=
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ [%{&fileformat}\]
-set statusline+=\ %l:%c 
+set statusline+=\ %l:%c\ 
 
 " W/Q/Wq/WQ helper
 cabbrev W w
