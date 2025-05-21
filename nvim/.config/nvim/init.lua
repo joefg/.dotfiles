@@ -28,7 +28,17 @@ require("lazy").setup {
   { "sheerun/vim-polyglot" },
   -- git
   { "lewis6991/gitsigns.nvim" },
-  { "NeogitOrg/neogit", cmd = "Neogit", dependencies = { "nvim-lua/plenary.nvim" } }
+  {
+    "NeogitOrg/neogit",
+    cmd = "Neogit",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      disable_context_highlighting = true,
+      commit_editor = {
+        spell_check = false
+      }
+    }
+  }
 }
 
 require("settings"):setup()
