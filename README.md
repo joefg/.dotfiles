@@ -12,12 +12,11 @@ To install each config, run `stow <config>` from this repository.
 
 ### Terminal Fonts
 
-I use [Nerd Fonts](https://www.nerdfonts.com/) to give additional icons in the
+The terminal emulator I use, [ghostty](http://ghostty.org/), handles a font
+and colour schemes for you. If you're not using that, download a
+[Nerd Font](https://www.nerdfonts.com/) to give additional icons in the
 terminal. This is used in `nvim` and `tmux` to provide separation between
-elements in status bars.
-
-The font I currently use is `UbuntuMono Nerd Font`, available in the AUR or from
-the Nerd Fonts website.
+elements in status bars. I like either the JetBrains font or Ubuntu Mono.
 
 On environments where this font is not installed, there are options in both the
 `nvim` and `tmux` configurations which can use other symbols in place of these
