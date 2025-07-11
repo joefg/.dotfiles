@@ -1,0 +1,8 @@
+-- Show nulls
+\pset null '[NULL']
+
+-- Use a separate history file for each connected database.
+\set HISTFILE ~/.psql_history :DBNAME
+
+-- Enable timing by default.
+\timing
