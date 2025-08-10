@@ -81,6 +81,9 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ [%{&fileformat}\]
 set statusline+=\ %l:%c\ 
 
+" yank to clipboard
+set clipboard+=unnamedplus
+
 " W/Q/Wq/WQ helper
 cabbrev W w
 cabbrev Q q
