@@ -59,6 +59,9 @@ M.setup = function()
 
   -- undolevels
   vim.opt.undolevels = 999
+
+  -- yank to clipboard
+  vim.opt.clipboard = "unnamedplus"
 end
 
 return M
