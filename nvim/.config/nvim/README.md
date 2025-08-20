@@ -7,3 +7,9 @@ If you want an IDE, just use VSCode. Otherwise, this works reasonably well.
 
 Plugins are managed with [lazy.nvim](https://github.com/folke/lazy.nvim), inside
 `init.lua`.
+
+## DAP
+
+There is support for [Debug
+Adapters](https://codeberg.org/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation),
+at the moment limited to Python files.

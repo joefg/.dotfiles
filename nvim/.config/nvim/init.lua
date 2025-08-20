@@ -36,7 +36,16 @@ require("lazy").setup {
         spell_check = false
       }
     }
-  }
+  },
+  -- dap
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio"
+    }
+  },
+  { "mfussenegger/nvim-dap-python" },
 }
 
 require("settings"):setup()
@@ -72,3 +81,12 @@ require("macros"):setup()
 --                 /_/
 
 require("template"):setup()
+
+--    ____       __                      _            
+--   / __ \___  / /_  __  ______ _____ _(_)___  ____ _
+--  / / / / _ \/ __ \/ / / / __ `/ __ `/ / __ \/ __ `/
+-- / /_/ /  __/ /_/ / /_/ / /_/ / /_/ / / / / / /_/ / 
+--/_____/\___/_.___/\__,_/\__, /\__, /_/_/ /_/\__, /  
+--                       /____//____/        /____/   
+
+require("debugging"):setup()
