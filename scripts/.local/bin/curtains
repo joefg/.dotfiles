@@ -3,15 +3,11 @@
 function darken_tmux(){
 	echo "Closing curtains..."
 	sed -i -e 's/tomorrow.conf/tomorrow-night.conf/g' ~/.config/tmux/tmux.conf
-	echo "Please reload your tmux config."
-	echo "Use <CTRL-B> + R."
 }
 
 function lighten_tmux(){
 	echo "Opening curtains..."
 	sed -i -e 's/tomorrow-night.conf/tomorrow.conf/g' ~/.config/tmux/tmux.conf
-	echo "Please reload your tmux config."
-	echo "Use <CTRL-B> + R."
 }
 
 function curtains(){
@@ -21,6 +17,7 @@ function curtains(){
 	else
 		lighten_tmux
 	fi
+	tmux source-file ~/.config/tmux/tmux.conf
 }
 
 curtains $1
