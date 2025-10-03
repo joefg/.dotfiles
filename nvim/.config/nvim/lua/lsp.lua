@@ -7,35 +7,20 @@
 local M = {}
 
 M.setup = function()
-  local lsp = require("lspconfig")
-
   -- Deno
-  lsp.denols.setup {
-    root_dir = lsp.util.root_pattern("deno.json", "deno.jsonc"),
-  }
-
+  vim.lsp.enable('denols')
+  
   -- TypeScript
-  lsp.ts_ls.setup {
-    root_dir = lsp.util.root_pattern("package.json"),
-    single_file_support = false,
-  }
+  vim.lsp.enable('ts_ls')
 
   -- JavaScript (eslint)
-  lsp.eslint.setup {}
+  vim.lsp.enable('eslint')
 
   -- Python (pyright)
-  lsp.pyright.setup {}
+  vim.lsp.enable('pyright')
 
   -- Lua (luals)
-  lsp.lua_ls.setup {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
-      },
-    },
-  }
+  vim.lsp.enable('lua_ls')
 
   -- Global mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
