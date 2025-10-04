@@ -18,6 +18,10 @@ and colour schemes for you. If you're not using that, download a
 terminal. This is used in `nvim` and `tmux` to provide separation between
 elements in status bars. I like either the JetBrains font or Ubuntu Mono.
 
+Note that [Starship](https://starship.rs) also requires a Nerd Font. If you
+don't want a Nerd Font, don't install Starship, and you can have a simpler
+bash prompt.
+
 On environments where this font is not installed, there are options in both the
 `nvim` and `tmux` configurations which can use other symbols in place of these
 icons.
