@@ -70,11 +70,15 @@ function parse_git_dirty {
 	fi
 }
 
-RCol='\[\e[m\]'    # reset colour
-Red='\[\e[0;31m\]' # red
-Gre='\[\e[0;32m\]' # green
-Yel='\[\e[0;33m\]' # yellow
+if [ -r /usr/bin/fzf ]; then
+		eval "$(starship init bash)"
+else
+		RCol='\[\e[m\]'    # reset colour
+		Red='\[\e[0;31m\]' # red
+		Gre='\[\e[0;32m\]' # green
+		Yel='\[\e[0;33m\]' # yellow
 
-PS1=""
-PS1+="${RCol}"
-PS1+="${Gre}\u@\h${RCol}:${Yel}\w ${RCol}\`parse_git_branch\`\\$ "
+		PS1=""
+		PS1+="${RCol}"
+		PS1+="${Gre}\u@\h${RCol}:${Yel}\w ${RCol}\`parse_git_branch\`\\$ "
+fi
