@@ -70,7 +70,7 @@ function parse_git_dirty {
 	fi
 }
 
-if [ -r /usr/bin/fzf ]; then
+if [ -r /usr/bin/starship ]; then
 		eval "$(starship init bash)"
 else
 		RCol='\[\e[m\]'    # reset colour
