@@ -115,7 +115,7 @@
 		"on-click": "pavucontrol"
   },
 	"bluetooth": {
-     "format": "{icon}",
+     "format": "{num_connections} {icon}",
      "format-icons": {
           "enabled": "",
           "disabled": "x"
