@@ -25,6 +25,7 @@ window#waybar.hidden {
 #pulseaudio,
 #pulseaudio-slider,
 #network,
+#bluetooth,
 #battery {
   color: #161320;
   margin-top: 6px;
@@ -153,6 +154,11 @@ window#waybar.hidden {
 }
 
 #pulseaudio-slider slider {}
+
+#bluetooth {
+  background: #ebdbb2;
+  padding-right: 13px;
+}
 
 #network {
   background: #8ec07c;
