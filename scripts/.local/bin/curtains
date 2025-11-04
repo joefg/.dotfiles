@@ -1,21 +1,23 @@
 #!/usr/bin/env sh
 
-function darken_tmux(){
+function darken(){
 	echo "Closing curtains..."
 	sed -i -e 's/tomorrow.conf/tomorrow-night.conf/g' ~/.config/tmux/tmux.conf
+	gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
 
-function lighten_tmux(){
+function lighten(){
 	echo "Opening curtains..."
 	sed -i -e 's/tomorrow-night.conf/tomorrow.conf/g' ~/.config/tmux/tmux.conf
+	gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
 }
 
 function curtains(){
 	COLORSCHEME="$(gsettings get org.gnome.desktop.interface color-scheme)"
-	if [ $COLORSCHEME = "'prefer-dark'" ]; then
-		darken_tmux
+	if [ $COLORSCHEME = "'prefer-light'" ]; then
+		darken
 	else
-		lighten_tmux
+		lighten
 	fi
 	tmux source-file ~/.config/tmux/tmux.conf
 }
