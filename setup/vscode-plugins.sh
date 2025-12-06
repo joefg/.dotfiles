@@ -4,6 +4,7 @@ PLUGINS=(
 	'vscodevim.vim'
 	'ms-vscode.theme-tomorrowkit'
 	'editorconfig.EditorConfig'
+	'ms-vscode-remote.remote-ssh'
 )
 
 for PLUGIN in "${PLUGINS[@]}"; do
