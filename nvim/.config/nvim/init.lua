@@ -22,10 +22,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
-  -- lsps
-  { "neovim/nvim-lspconfig" },
-  -- treesitter
-  { "nvim-treesitter/nvim-treesitter" },
   -- languages
   { "sheerun/vim-polyglot" },
   -- git
@@ -40,16 +36,7 @@ require("lazy").setup {
         spell_check = false
       }
     }
-  },
-  -- dap
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio"
-    }
-  },
-  { "mfussenegger/nvim-dap-python" },
+  }
 }
 
 require("settings"):setup()
@@ -66,15 +53,12 @@ require("statusline"):setup {
   git_symbol = " ",
 }
 require("netrw"):setup()
-
--- git plugins
 require("gitsigns").setup()
 
 --    ____ ___  ____ _______________  _____
 --   / __ `__ \/ __ `/ ___/ ___/ __ \/ ___/
 --  / / / / / / /_/ / /__/ /  / /_/ (__  )
 -- /_/ /_/ /_/\__,_/\___/_/   \____/____/
-
 require("macros"):setup()
 
 --   __                       __      __
@@ -83,29 +67,4 @@ require("macros"):setup()
 --/ /_/  __/ / / / / / /_/ / / /_/ / /_/  __(__  )
 --\__/\___/_/ /_/ /_/ .___/_/\__,_/\__/\___/____/
 --                 /_/
-
 require("template"):setup()
-
---    ____       __                      _            
---   / __ \___  / /_  __  ______ _____ _(_)___  ____ _
---  / / / / _ \/ __ \/ / / / __ `/ __ `/ / __ \/ __ `/
--- / /_/ /  __/ /_/ / /_/ / /_/ / /_/ / / / / / /_/ / 
---/_____/\___/_.___/\__,_/\__, /\__, /_/_/ /_/\__, /  
---                       /____//____/        /____/   
-
-require("debugging"):setup()
---    __                      _ __  __
---   / /_________  ___  _____(_) /_/ /____  _____
---  / __/ ___/ _ \/ _ \/ ___/ / __/ __/ _ \/ ___/
--- / /_/ /  /  __/  __(__  ) / /_/ /_/  __/ /
--- \__/_/   \___/\___/____/_/\__/\__/\___/_/
-
-require("treesitter"):setup()
-
---     __   _____ ____
---    / /  / ___// __ \_____
---   / /   \__ \/ /_/ / ___/
---  / /______/ / ____(__  )
--- /_____/____/_/   /____/
-
-require("lsp"):setup()
