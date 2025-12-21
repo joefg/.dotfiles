@@ -2,14 +2,12 @@
 
 function darken(){
 	echo "Closing curtains..."
-	sed -i -e 's/tomorrow.conf/tomorrow-night.conf/g' ~/.config/tmux/tmux.conf
 	gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 	gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 }
 
 function lighten(){
 	echo "Opening curtains..."
-	sed -i -e 's/tomorrow-night.conf/tomorrow.conf/g' ~/.config/tmux/tmux.conf
 	gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
 	gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
 }
@@ -21,7 +19,6 @@ function curtains(){
 	else
 		lighten
 	fi
-	tmux source-file ~/.config/tmux/tmux.conf
 }
 
 curtains $1
