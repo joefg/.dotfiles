@@ -20,11 +20,6 @@ fi
 alias ..='cd ../'
 alias ~='cd ~'
 alias cls='clear'
-
-alias dotfiles="cd ~/.dotfiles"
-
-alias ..="cd ../"
-alias ~="cd ~"
 alias open="xdg-open"
 
 # Networking
