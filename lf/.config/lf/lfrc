@@ -1,0 +1,19 @@
+set drawbox
+
+set icons true
+
+cmd on-init :{{
+    cmd on-redraw %{{
+        if [ "$lf_width" -le 80 ]; then
+						lf -remote "send $id set nopreview"
+            lf -remote "send $id set ratios 1"
+        elif [ "$lf_width" -le 160 ]; then
+            lf -remote "send $id set ratios 1:2:3"
+						lf -remote "send $id set preview"
+        else
+            lf -remote "send $id set ratios 1:2:3:5"
+						lf -remote "send $id set preview"
+        fi
+    }}
+    on-redraw
+}}
