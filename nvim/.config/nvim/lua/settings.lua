@@ -42,10 +42,10 @@ M.setup = function()
 
   -- tabs. May be overriten by autocmd rules
   vim.opt.autoindent = true -- Auto-indent new lines
-  vim.opt.shiftwidth = 4 -- Number of auto-indent spaces
+  vim.opt.shiftwidth = 2 -- Number of auto-indent spaces
   vim.opt.smartindent = true -- Enable smart-indent
   vim.opt.smarttab = true -- Enable smart-tabs
-  vim.opt.softtabstop = 4 -- Number of spaces per Tab
+  vim.opt.softtabstop = 2 -- Number of spaces per Tab
 
   -- searching
   vim.opt.hlsearch = true -- Highlight all search results
@@ -61,7 +61,7 @@ M.setup = function()
   vim.opt.undolevels = 999
 
   -- yank to clipboard
-  vim.opt.clipboard = "unnamedplus"
+  --vim.opt.clipboard = "unnamedplus"
 end
 
 return M
