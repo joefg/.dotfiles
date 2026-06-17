@@ -70,7 +70,7 @@ function parse_git_dirty {
 	fi
 }
 
-if [ -r /usr/bin/starship ] && [ -z $NO_STARSHIP ]; then
+if [ -r /usr/bin/starship ] && [ -z $NO_STARSHIP ] && [ -z $STARSHIP_SESSION_KEY ]; then
 		eval "$(starship init bash)"
 else
 		RCol='\[\e[m\]'    # reset colour
