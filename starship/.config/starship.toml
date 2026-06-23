@@ -19,7 +19,7 @@ show_always = false
 ssh_only = true
 
 [directory]
-style = "blue"
+style = "bright-blue"
 
 [character]
 success_symbol = "[❯](purple)"
