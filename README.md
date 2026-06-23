@@ -38,12 +38,6 @@ Git offers a configuration API: `git config`. This is encouraged, as there can
 be many different machine-level differences in configuration. Have a look at
 `setup/git-config.sh` for examples.
 
-#### VSCode
-
-In lieu of a proper managed extensions file, there is a script to install VSCode
-plugins in `setup/vscode-plugins.sh`. The rest of the VSCode config is to be
-handled on a per-machine basis.
-
 ### Windows
 
 If you're on WSL, you shouldn't have any issue with these instructions, because
