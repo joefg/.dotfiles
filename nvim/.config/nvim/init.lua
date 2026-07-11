@@ -39,32 +39,6 @@ require("lazy").setup {
   }
 }
 
-require("settings"):setup()
-
---   __  __ (_)
---  / / / // /
--- / /_/ // /
--- \__,_//_/
-
+require("joefg")
 vim.cmd("colorscheme retrobox")
-require("statusline"):setup {
-  separator = "arrows",
-  lsp_symbol = "symbols",
-  git_symbol = " ",
-}
-require("netrw"):setup()
 require("gitsigns").setup()
-
---    ____ ___  ____ _______________  _____
---   / __ `__ \/ __ `/ ___/ ___/ __ \/ ___/
---  / / / / / / /_/ / /__/ /  / /_/ (__  )
--- /_/ /_/ /_/\__,_/\___/_/   \____/____/
-require("macros"):setup()
-
---   __                       __      __
---  / /____  ____ ___  ____  / /___ _/ /____  _____
--- / __/ _ \/ __ `__ \/ __ \/ / __ `/ __/ _ \/ ___/
---/ /_/  __/ / / / / / /_/ / / /_/ / /_/  __(__  )
---\__/\___/_/ /_/ /_/ .___/_/\__,_/\__/\___/____/
---                 /_/
-require("template"):setup()
