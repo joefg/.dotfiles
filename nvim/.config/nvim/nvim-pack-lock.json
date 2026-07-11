@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "gitsigns.nvim": {
+      "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "neogit": {
+      "rev": "a0847c4bea5a5f92a36e3f3bf7da99d7d685d3ac",
+      "src": "https://github.com/NeogitOrg/neogit"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "vim-polyglot": {
+      "rev": "f061eddb7cdcc614c8406847b2bfb53099832a4e",
+      "src": "https://github.com/sheerun/vim-polyglot"
+    }
+  }
+}
