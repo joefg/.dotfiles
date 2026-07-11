@@ -10,6 +10,9 @@
 --	* https://github.com/nanotee/nvim-lua-guide
 --	* https://oroques.dev/notes/neovim-init/
 
+-- Colour scheme
+vim.cmd("colorscheme retrobox")
+
 -- Plugins
 vim.pack.add({
   { src = "https://github.com/sheerun/vim-polyglot" },
@@ -18,10 +21,12 @@ vim.pack.add({
   { src = "https://github.com/NeogitOrg/neogit" }
 })
 
-require("joefg")
-vim.cmd("colorscheme retrobox")
-require("gitsigns").setup()
-require("neogit").setup({
+local joefg = require("joefg")
+local gitsigns = require("gitsigns")
+gitsigns.setup()
+
+local neogit = require("neogit")
+neogit.setup({
   disable_context_highlighting = true,
   commit_editor = {
     spell_check = false
