@@ -10,4 +10,6 @@ require("joefg.netrw"):setup()
 
 require("joefg.macros"):setup()
 
+require("joefg.pack"):setup()
+
 require("joefg.template"):setup()
