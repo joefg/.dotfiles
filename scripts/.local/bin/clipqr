@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-
-function clipqr(){
-	xclip -o -s -c | qrencode -t utf8i --
-}
-
-clipqr $1
