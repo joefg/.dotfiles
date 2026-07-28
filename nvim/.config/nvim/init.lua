@@ -14,3 +14,7 @@
 vim.cmd("colorscheme retrobox")
 
 local joefg = require("joefg")
+joefg.setup({
+  separator = "arrows",
+  git_symbol = " "
+})

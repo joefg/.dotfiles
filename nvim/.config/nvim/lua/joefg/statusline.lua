@@ -1,17 +1,6 @@
---          __        __             ___
---    _____/ /_____ _/ /___  _______/ (_)___  ___
---   / ___/ __/ __ `/ __/ / / / ___/ / / __ \/ _ \
---  (__  ) /_/ /_/ / /_/ /_/ (__  ) / / / / /  __/
--- /____/\__/\__,_/\__/\__,_/____/_/_/_/ /_/\___/
---
-
-local function clean_nils(table)
-  local ret = {}
-  for _, v in pairs(table) do
-    ret[#ret + 1] = v
-  end
-  return ret
-end
+local colours = require("joefg/colours")
+local icons = require("joefg/icons") 
+local utils = require("joefg/utils")
 
 local M = {}
 
@@ -54,42 +43,6 @@ M.modes = {
   ["t"] = "TERMINAL",
 }
 
-M.colours = {
-  default = "",
-  active = "%#StatusLine#",
-  inactive = "%#StatuslineNC#",
-  mode = "%#Mode#",
-  mode_alt = "%#ModeAlt#",
-  git = "%#Git#",
-  git_alt = "%#GitAlt#",
-  filetype = "%#Filetype#",
-  filetype_al = "%#FiletypeAlt#",
-  line_col = "%#LineCol#",
-  line_col_alt = "%#LineColAlt#",
-  normal = "%#Normal#",
-}
-
-M.separators = {
-  arrows = { "  ", "  " },
-  bars = { " | ", " | " },
-  blank = { "   ", "   " },
-}
-
-M.lsp_symbols = {
-  symbols = {
-    error = " ",
-    warning = " ",
-    hint = " ",
-    info = " ",
-  },
-  text = {
-    error = "e:",
-    warning = "w:",
-    hints = "h:",
-    info = "i:",
-  },
-}
-
 M.sep = function(self, direction)
   local sep_style = self.separator or " "
   local sep_direction = 1
@@ -98,7 +51,7 @@ M.sep = function(self, direction)
   elseif direction == "right" then
     sep_direction = 2
   end
-  return self.separators[sep_style][sep_direction]
+  return icons.separators[sep_style][sep_direction]
 end
 
 M.mode = function(self)
@@ -128,45 +81,6 @@ M.lineinfo = function()
   return "%l:%c"
 end
 
-M.lsp = function(self)
-  if vim.lsp.get_clients() == {} then
-    return nil
-  end
-
-  local count = {}
-  local levels = {
-    errors = "Error",
-    warnings = "Warn",
-    info = "Info",
-    hints = "Hint",
-  }
-  local symbol_set = self.lsp_symbol
-
-  for k, level in pairs(levels) do
-    count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
-  end
-
-  local errors, warnings, hints, info = nil, nil, nil, nil
-
-  if count["errors"] ~= 0 then
-    errors = "%#LspDiagnosticsSignError#" .. self.lsp_symbols[symbol_set].error .. count["errors"]
-  end
-  if count["warnings"] ~= 0 then
-    warnings = "%#LspDiagnosticsSignWarning#" .. self.lsp_symbols[symbol_set].warning .. count["warnings"]
-  end
-  if count["hints"] ~= 0 then
-    hints = "%#LspDiagnosticsSignHint#" .. self.lsp_symbols[symbol_set].hint .. count["hints"]
-  end
-  if count["info"] ~= 0 then
-    info = "%#LspDiagnosticsSignInformation#" .. self.lsp_symbols[symbol_set].info .. count["info"]
-  end
-
-  if errors == nil and warnings == nil and hints == nil and info == nil then
-    return nil
-  end
-  return (errors or "") .. (warnings or "") .. (hints or "") .. (info or "")
-end
-
 M.file = function()
   return "%t%m"
 end
@@ -174,50 +88,46 @@ end
 M.fileinfo = function(self, direction)
   local separator = self:sep(direction)
   local filetype = vim.o.filetype
-  if filetype == "" then
-    filetype = nil
-  end
   local info = {
     "%{&fileencoding?&fileencoding:&encoding}",
     "%{&fileformat}",
     filetype,
   }
-  return string.format("%s", table.concat(clean_nils(info), separator))
+  return string.format("%s", table.concat(utils.clean_nils(info), separator))
 end
 
-M.component = function(self, text, colour, direction)
+M.component = function(self, text, direction)
   if text == nil then
     return nil
   end
   if direction == "left" then
-    return string.format("%s%s%s", colour, text, self:sep(direction))
+    return string.format("%s%s", text, self:sep(direction))
   elseif direction == "right" then
-    return string.format("%s%s%s", colour, self:sep(direction), text)
+    return string.format("%s%s", self:sep(direction), text)
   end
 end
 
 M.statusline_active = function(self)
   local left = {
-    self:component(self:mode(), self.colours.default, "left"),
-    self:component(self:git_status(), self.colours.default, "left"),
-    self:component(self:file(), self.colours.default, "left"),
-    self:component(self:lsp(), self.colours.default, "left"),
+    self:component(self:mode(),"left"),
+    self:component(self:git_status(),"left"),
+    self:component(self:file(), "left")
   }
   local right = {
-    self:component(self:fileinfo("right"), self.colours.default, "right"),
-    self:component(self:lineinfo(), self.colours.default, "right"),
+    self:component(self:fileinfo("right"), "right"),
+    self:component(self:lineinfo(), "right"),
   }
   return string.format(
     "%s %s %s",
-    " " .. table.concat(clean_nils(left)),
+    " " .. table.concat(utils.clean_nils(left)),
     "%=",
-    table.concat(clean_nils(right)) .. " "
+    table.concat(utils.clean_nils(right)) .. " "
   )
 end
 
 M.statusline_inactive = function(self)
   local bar = {
-    self:component(self:file(), self.colours.normal, "left"),
+    self:component(self:file(), "left"),
   }
   return " " .. table.concat(bar)
 end
@@ -225,7 +135,6 @@ end
 M.setup = function(self, config)
   self.separator = config.separator or "blank"
   self.git_symbol = config.git_symbol or "g:"
-  self.lsp_symbol = config.lsp_symbol or "text"
 
   Statusline = {}
   Statusline.active = function()
@@ -242,8 +151,8 @@ M.setup = function(self, config)
     [[
 		augroup Statusline
 		au!
-		au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-		au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
+      au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
+      au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
 		augroup END
 	]],
     false
