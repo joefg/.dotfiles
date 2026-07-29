@@ -8,6 +8,7 @@ $git_status\
 $line_break\
 $python\
 $aws\
+$terraform\
 $character"""
 
 add_newline = false
@@ -48,6 +49,9 @@ style = "bright-green"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-green"
+
+[terraform]
+format = '[$symbol$version $workspace]($style) '
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
