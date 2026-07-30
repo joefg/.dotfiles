@@ -12,6 +12,7 @@ $terraform\
 $character"""
 
 add_newline = false
+scan_timeout = 50
 
 [username]
 show_always = false
