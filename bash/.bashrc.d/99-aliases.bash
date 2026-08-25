@@ -21,6 +21,17 @@ alias ..='cd ../'
 alias ~='cd ~'
 alias cls='clear'
 alias open="xdg-open"
+alias rand64="openssl rand -base64 32"
+
+function passphrase() {
+    test -f /usr/share/dict/words || echo "Can't load words list"
+    local IFS='-'
+    local words=()
+    for i in {1..3}; do
+        words+=("$(shuf -n 1 /usr/share/dict/words)")
+    done
+    echo "${words[*]}" | tr '[:upper:]' '[:lower:]'
+}
 
 # Networking
 alias publicip="dig +short txt ch whoami.cloudflare @1.0.0.1"
