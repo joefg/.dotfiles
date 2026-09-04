@@ -37,6 +37,9 @@ if [ -r /usr/bin/git ]; then
         git config --global mergetool.keepBackup false
     fi
 
+    # create a new remote branch automatically on push
+    git config --global push.autoSetupRemote true
+
     # better diffs
     # - show renames with a prefix (i/ for index, w/ for working directory,
     #   c/ for commit.
