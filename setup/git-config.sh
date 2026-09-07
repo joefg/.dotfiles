@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-if [ -r /usr/bin/git ]; then
+if command -v git >/dev/null 2>&1
+then
     # using main for default branch
     git config --global init.defaultBranch main
 
     # lol - pretty git log oneline
-    git config --global alias.lol "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    git config --global alias.lol \
+        "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
     # ui - branches in columns, ordered by committer date
     git config --global column.ui auto
@@ -50,7 +52,8 @@ if [ -r /usr/bin/git ]; then
     git config --global diff.colorMoved true
 
     # if we have difftastic, add aliases which use it but otherwise leave diff alone
-    if [ -r /usr/bin/difft ]; then
+    if command -v difft >/dev/null 2>&1
+    then
         git config --global alias.difftl '!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f'
         git config --global alias.difft '!f() { GIT_EXTERNAL_DIFF=difft git diff; }; f'
         git config --global alias.diffts '!f() { GIT_EXTERNAL_DIFF=difft git show HEAD --ext-diff; }; f'
