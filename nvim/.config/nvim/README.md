@@ -2,8 +2,6 @@
 
 My neovim config is intended to be for editing.
 
-If you want an IDE, just use VSCode. Otherwise, this works reasonably well.
-
 ## Plugins
 
 Plugins are handled with [vim.pack](https://neovim.io/doc/user/pack/), and are
@@ -21,4 +19,11 @@ local plugin = require("plugin")
 plugin.setup({
     option = true -- or value, setup here.
 })
+```
+
+To remove a plugin and regenerate the lockfile, you need to do this after
+removing the plugin's config file:
+
+```vim
+:lua vim.pack.del({"plugin-name"})
 ```
