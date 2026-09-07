@@ -10,8 +10,5 @@
 --	* https://github.com/nanotee/nvim-lua-guide
 --	* https://oroques.dev/notes/neovim-init/
 
--- Colour scheme
-vim.cmd("colorscheme retrobox")
-
 local joefg = require("joefg")
 joefg.setup({})
