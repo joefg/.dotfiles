@@ -11,7 +11,7 @@ M.setup = function()
   vim.opt.showmatch = true -- Highlight matching brace
   vim.opt.errorbells = true -- Beep or flash screen on errors
   vim.opt.visualbell = true -- Use visual bell (no beeping)
-  vim.opt.mouse = "" -- Disable mouse
+  vim.opt.mouse = "a" -- Enable mouse
 
   -- folds
   vim.opt.foldmethod = "indent"
