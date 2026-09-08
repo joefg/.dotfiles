@@ -36,7 +36,7 @@ function parse_git_branch() {
 #
 
 # get current status of git repo
-function parse_git_dirty {
+function parse_git_dirty() {
 	status=`git status 2>&1 | tee`
 	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
 	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
@@ -70,9 +70,7 @@ function parse_git_dirty {
 	fi
 }
 
-if [ -r /usr/bin/starship ] && [ -z $NO_STARSHIP ] && [ -z $STARSHIP_SESSION_KEY ]; then
-		eval "$(starship init bash)"
-else
+function mk_prompt() {
 		RCol='\[\e[m\]'    # reset colour
 		Red='\[\e[0;31m\]' # red
 		Gre='\[\e[0;32m\]' # green
@@ -81,4 +79,6 @@ else
 		PS1=""
 		PS1+="${RCol}"
 		PS1+="${Gre}\u@\h${RCol}:${Yel}\w ${RCol}\`parse_git_branch\`\\$ "
-fi
+}
+
+mk_prompt
