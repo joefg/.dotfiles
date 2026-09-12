@@ -1,3 +1,12 @@
+function if_available() {
+    local -r cmd="$1"
+    if command -v $cmd >/dev/null 2>&1; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # Aliases
 alias aliases="$EDITOR ~/.aliases.bash"
 alias dotfiles="cd ~/.dotfiles"
@@ -20,8 +29,9 @@ fi
 alias ..='cd ../'
 alias ~='cd ~'
 alias cls='clear'
-alias open="xdg-open"
-alias rand64="openssl rand -base64 32"
+
+if_available xdg-open && alias open="xdg-open"
+if_available openssl && alias rand64="openssl rand -base64 32"
 
 function passphrase() {
     test -f /usr/share/dict/words || echo "Can't load words list"
