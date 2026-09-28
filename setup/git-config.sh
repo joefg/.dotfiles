@@ -58,4 +58,29 @@ then
         git config --global alias.difft '!f() { GIT_EXTERNAL_DIFF=difft git diff; }; f'
         git config --global alias.diffts '!f() { GIT_EXTERNAL_DIFF=difft git show HEAD --ext-diff; }; f'
     fi
+
+    # Better commit messages via template.
+    cat << EOF > ~/.gitmessage
+# <type>(<optional scope>): <description>
+#
+# <Optional body: explain what changed and why.>
+# 
+# <Optional footer(s), e.g. Closes: #123>
+#
+# Types: feature (or feat) and fix (bug fix) are defined by the spec.
+# Common additions: build, chore, ci, docs, perf, refactor, revert,
+# style, test.
+#
+# No scope? Remove "(<optional scope>)" including the brackets.
+#
+# Breaking change: add ! before the colon, e.g. feat(api)!: ...
+# and/or add a footer: BREAKING CHANGE: <description>
+#
+# Assisted by a language model? Add: Assisted-by: <model-name>
+#
+# Refer to <https://www.conventionalcommits.org/en/v1.0.0/> for
+# more details.
+EOF
+    git config --global commit.template ~/.gitmessage
+    
 fi
