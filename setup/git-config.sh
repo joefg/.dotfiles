@@ -23,14 +23,14 @@ then
     # commit --verbose by default
     git config --global commit.verbose true
 
-    if [ -r /usr/bin/nvim ]; then
+    if command -v nvim >/dev/null 2>&1; then
         # use neovim as the default editor
         git config --global core.editor nvim
 
         # use neovim as a difftool
         git config --global merge.tool nvimdiff
         git config --global mergetool.keepBackup false
-    elif [ -r /usr/bin/vim ]; then
+    elif command -v vim >/dev/null 2>&1; then
         # use vim as the default editor
         git config --global core.editor vim
 
