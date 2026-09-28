@@ -1,70 +1,92 @@
 #!/usr/bin/env bash
+#
+# git-config.sh — idempotently install a set of global git configuration.
+#
+# Exit codes:
+#   0  success
+#   1  fatal error (git missing, config not writable, ...)
 
-if command -v git >/dev/null 2>&1
-then
-    # using main for default branch
-    git config --global init.defaultBranch main
+set -euo pipefail
 
-    # lol - pretty git log oneline
-    git config --global alias.lol \
-        "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+log() { printf 'git-config: %s\n' "$*" >&2; }
+die() { log "error: $*"; exit 1; }
+cfg() { git config --global "$@"; }
 
-    # ui - branches in columns, ordered by committer date
-    git config --global column.ui auto
-    git config --global branch.sort -committerdate
+# --- prerequisites -----------------------------------------------------------
 
-    # listing tags - sort by version:refname
-    git config --global tag.sort version:refname
+command -v git >/dev/null 2>&1 || die "git is not installed or not in PATH"
 
-    # shorthands
-    git config --global alias.fixup "commit --fixup HEAD"
-    git config --global alias.squash "commit --squash HEAD"
+cfg init.defaultBranch main
 
-    # commit --verbose by default
-    git config --global commit.verbose true
+# lol - pretty git log oneline
+LOL_ALIAS="log --graph \
+  --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+  --abbrev-commit"
+cfg alias.lol "$LOL_ALIAS"
 
-    if command -v nvim >/dev/null 2>&1; then
-        # use neovim as the default editor
-        git config --global core.editor nvim
+# ui - branches in columns, ordered by committer date
+cfg column.ui auto
+cfg branch.sort -committerdate
 
-        # use neovim as a difftool
-        git config --global merge.tool nvimdiff
-        git config --global mergetool.keepBackup false
-    elif command -v vim >/dev/null 2>&1; then
-        # use vim as the default editor
-        git config --global core.editor vim
+# listing tags - sort by version:refname
+cfg tag.sort version:refname
 
-        # use vimdiff as a difftool
-        git config --global merge.tool vimdiff
-        git config --global mergetool.keepBackup false
-    fi
+# shorthands
+cfg alias.fixup "commit --fixup HEAD"
+cfg alias.squash "commit --squash HEAD"
 
-    # create a new remote branch automatically on push
-    git config --global push.autoSetupRemote true
+# commit --verbose by default
+cfg commit.verbose true
 
-    # better diffs
-    # - show renames with a prefix (i/ for index, w/ for working directory,
-    #   c/ for commit.
-    # - includes file renames in diffs.
-    # - show code moves in colour
-    git config --global diff.mnemonicPrefix true
-    git config --global diff.renames true
-    git config --global diff.colorMoved true
+# editor / difftool: prefer nvim, fall back to vim
+if command -v nvim >/dev/null 2>&1; then
+    EDITOR_CMD=nvim
+    MERGE_TOOL=nvimdiff
+elif command -v vim >/dev/null 2>&1; then
+    EDITOR_CMD=vim
+    MERGE_TOOL=vimdiff
+fi
 
-    # if we have difftastic, add aliases which use it but otherwise leave diff alone
-    if command -v difft >/dev/null 2>&1
-    then
-        git config --global alias.difftl '!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f'
-        git config --global alias.difft '!f() { GIT_EXTERNAL_DIFF=difft git diff; }; f'
-        git config --global alias.diffts '!f() { GIT_EXTERNAL_DIFF=difft git show HEAD --ext-diff; }; f'
-    fi
+if [ -n "${EDITOR_CMD:-}" ]; then
+    # use the detected editor as the default editor
+    cfg core.editor "$EDITOR_CMD"
 
-    # Better commit messages via template.
-    cat << EOF > ~/.gitmessage
+    # use the matching diff tool
+    cfg merge.tool "$MERGE_TOOL"
+    cfg mergetool.keepBackup false
+else
+    log "neither nvim nor vim found; core.editor left untouched"
+fi
+
+# create a new remote branch automatically on push
+cfg push.autoSetupRemote true
+
+# better diffs
+# - show renames with a prefix (i/ for index, w/ for working directory,
+#   c/ for commit.
+# - includes file renames in diffs.
+# - show code moves in colour
+cfg diff.mnemonicPrefix true
+cfg diff.renames true
+cfg diff.colorMoved true
+
+# if we have difftastic, add aliases which use it but otherwise leave diff alone
+if command -v difft >/dev/null 2>&1; then
+    # alias values are parsed by a shell, so they must be self-quoted; "$@"
+    # passes any extra arguments through to the underlying git command.
+    cfg alias.difftl '!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff "$@"; }; f'
+    cfg alias.difft '!f() { GIT_EXTERNAL_DIFF=difft git diff "$@"; }; f'
+    cfg alias.diffts '!f() { GIT_EXTERNAL_DIFF=difft git show HEAD --ext-diff; }; f'
+fi
+
+# Better commit messages via template.
+# Quoted heredoc ('EOF') so nothing is expanded; written to $HOME explicitly
+# (tilde expansion can be surprising depending on context).
+cat <<'EOF' > "$HOME/.gitmessage"
 # <type>(<optional scope>): <description>
 #
 # <Optional body: explain what changed and why.>
-# 
+#
 # <Optional footer(s), e.g. Closes: #123>
 #
 # Types: feature (or feat) and fix (bug fix) are defined by the spec.
@@ -81,6 +103,7 @@ then
 # Refer to <https://www.conventionalcommits.org/en/v1.0.0/> for
 # more details.
 EOF
-    git config --global commit.template ~/.gitmessage
-    
-fi
+
+cfg commit.template "$HOME/.gitmessage"
+
+log "done"
