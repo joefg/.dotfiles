@@ -14,6 +14,7 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s nullglob
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=200
@@ -35,5 +36,5 @@ fi
 
 # Load our configurations from ~/.bashrc.d
 for file in ~/.bashrc.d/*.bash; do
-  source $file
+  source "$file"
 done
