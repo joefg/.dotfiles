@@ -1,5 +1,5 @@
 # Aliases
-alias aliases="$EDITOR ~/.aliases.bash"
+alias aliases='"$EDITOR" ~/.aliases.bash'
 alias dotfiles="cd ~/.dotfiles"
 
 alias ll='ls -alFh'
