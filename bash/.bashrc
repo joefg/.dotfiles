@@ -29,7 +29,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # Default editor
-if [ -r /usr/bin/nvim ]; then
+if [ -x /usr/bin/nvim ]; then
  export EDITOR=/usr/bin/nvim
  export VISUAL=/usr/bin/nvim
 fi
