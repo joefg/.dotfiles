@@ -20,7 +20,7 @@ fi
 alias ..='cd ../'
 alias cls='clear'
 alias open="xdg-open"
-alias rand64="openssl rand -base64 32"
+alias rand32="openssl rand -base64 32"
 
 function passphrase() {
     if [ ! -f /usr/share/dict/words ]; then
