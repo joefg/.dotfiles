@@ -18,7 +18,6 @@ fi
 
 # shortcuts
 alias ..='cd ../'
-alias ~='cd ~'
 alias cls='clear'
 alias open="xdg-open"
 alias rand64="openssl rand -base64 32"
