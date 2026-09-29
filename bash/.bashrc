@@ -14,26 +14,23 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s nullglob
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=200
-HISTFILESIZE=200
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # Default editor
-if [ -r /usr/bin/nvim ]; then
+if [ -x /usr/bin/nvim ]; then
  export EDITOR=/usr/bin/nvim
  export VISUAL=/usr/bin/nvim
 fi
 
 # Load our configurations from ~/.bashrc.d
 for file in ~/.bashrc.d/*.bash; do
-  source $file
+  source "$file"
 done
