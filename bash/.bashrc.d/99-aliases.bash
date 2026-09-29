@@ -23,13 +23,15 @@ alias open="xdg-open"
 alias rand64="openssl rand -base64 32"
 
 function passphrase() {
-    test -f /usr/share/dict/words || echo "Can't load words list"
-    local IFS='-'
+    if [ ! -f /usr/share/dict/words ]; then
+        echo "Can't load words list" >&2
+        return 1
+    fi
     local words=()
     for i in {1..3}; do
         words+=("$(shuf -n 1 /usr/share/dict/words)")
     done
-    echo "${words[*]}" | tr '[:upper:]' '[:lower:]'
+    echo "${words[0]}-${words[1]}-${words[2]}" | tr '[:upper:]' '[:lower:]'
 }
 
 # Networking
